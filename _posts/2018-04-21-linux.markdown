@@ -1,0 +1,127 @@
+---
+layout: post
+title: "linux"
+date: 2018-04-21 21:32:08 +0800
+---
+
+## msys2
+
+### 安装
+
+* 初始化
+
+    ```shell
+    #选择d盘根目录安装即可
+    pacman -Syu
+    pacman -Su
+    pacman -S make
+    pacman -S gcc
+    #pacman -S mingw-w64-x86_64-toolchain libraries development compression VCS sys-utils net-utils msys2-devel
+    ```
+
+
+* 美化
+
+    ```
+    开启颜色:
+    vim /etc/pacman.conf,反注释Color
+    ```
+
+* 镜像源
+
+    ```
+    vim /etc/pacman.d/mirrorlist.mingw32,在文件开头添加:
+    Server = http://mirrors.ustc.edu.cn/msys2/mingw/i686
+    vim /etc/pacman.d/mirrorlist.mingw64,在文件开头添加:
+    Server = http://mirrors.ustc.edu.cn/msys2/mingw/x86_64
+    vim /etc/pacman.d/mirrorlist.msys,在文件开头添加:
+    Server = http://mirrors.ustc.edu.cn/msys2/msys/$arch
+    然后执行 pacman -Sy 刷新软件包数据即可
+    ```
+
+## 软件
+
+### 命令行
+
+* rename改名
+
+    ```
+    rename "123" "456" *.123
+    ```
+    
+* xargs参数顺序
+
+    ```
+    find ./ -name '*.new'|xargs -i cp {} ./ //加上i表示用{}表示参数
+    ```
+    
+* ubuntu启动root
+
+    ```
+    sudo passwd root
+    ```
+
+* 查询最近修改文件
+
+    ```
+    find ./ -ctime n (n代表n*24小时)
+    ```
+
+* expr运算符
+
+    ```
+    expr length $string //计算string长度
+    ```
+
+### sed&awk
+
+* sed/awk查看文件特定行
+
+    ```
+    sed -n '5,10p' data
+    awk 'NR>=5&&NR<=10' data
+    ```
+
+* sed文本替换
+
+    ```
+    sed -i "/s/123/456/g" test.txt #-i为直接在文件内修改
+    ```
+
+* awk取最后一个匹配
+
+    ```
+    awk -F '/' '{print($NF)}'
+    ```
+
+* awk取shell中变量
+
+    ```
+    #加单引号括起来
+    awk -F ''$test'' '{print "'test'"}'
+    ```
+
+### zsh
+
+* 安装
+
+    ```
+    git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+    sh ~/.oh-my-zsh/tools/install.sh
+    ```
+
+### vim
+
+* 安装
+
+    ```
+    pacman -S vim
+    airline
+    git clone https://github.com/vim-airline/vim-airline ~/.vim/pack/dist/start/vim-airline
+    vim ~/.vimrc
+        set t_Co=256
+        let g:airline_powerline_fonts=1
+        let g:airline#extensions#tabline#enabled=1
+        let g:airline#extensions#tabline#buffer_nr_show=1
+    ```

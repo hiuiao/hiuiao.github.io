@@ -1,0 +1,31 @@
+---
+layout: post
+title: "Jekyll"
+date: 2018-04-21 21:45:08 +0800
+---
+## 安装
+
+* 基础环境安装
+
+    ```shell
+    pacman -S ruby
+    pacman -S make gcc
+
+    #GMP是一个任意精度的开源算术库，可用于符号整数，有理数，浮点数计算。
+    #libcrypt是glibc中的一个,加密与编码函式库
+    pacman -S gmp-devel 
+    pacman -S libcrypt-devel 
+    ```
+
+* 建站安装
+
+    ```shell
+    #使用gem安装kekyll进行建站.
+    #bundler作为依赖管理器
+    gem install jekyll bundler 
+    mkdir blog
+    cd blog
+    jekyll new ./
+    bundle install
+    bundle exec jekyll serve
+    ```

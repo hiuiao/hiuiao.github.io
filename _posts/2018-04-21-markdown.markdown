@@ -1,0 +1,75 @@
+---
+layout: post
+title: "markdown"
+date: 2018-04-21 21:30:08 +0800
+---
+## 正文
+
+* 段落格式
+
+    段落需要一个空行来区分  
+    换行需要在行尾加两个空格  
+    加上>可以增加缩进.或者直接一个tab也可以  
+    列表嵌套:tab+*  
+
+    * 列表嵌套
+        * 嵌套
+
+    分割线:\-\-\-
+
+    ---
+
+* 加粗斜体删除
+
+    两个\*包围起来表示加粗,一个\*包围表示斜体,\~\~包围表示删除  
+    **加粗**  
+    *斜体*  
+    ~~删除~~  
+
+* 转义
+
+    加\即可转义  
+
+* 表格
+
+    ```
+    标题一|标题二|标题三
+    -|-|-
+    123|456|789
+    ```
+
+    标题一|标题二|标题三
+    -|-|-
+    123|456|789
+
+* 代码和代码块块
+
+    行内代码用\`\`括起来.`print hello`  
+    使用"```"+"语言名称"标记代码块  
+    ```c
+    #include <stdio.h>
+    int main(){
+        printf("hello world!\n");
+        return 0;
+    }
+    ```
+
+* 流程图和时序图
+
+    jekyll的markdown解析并不支持  
+
+    ```flow
+    st=>start:start
+    e=>end
+    op=>opertion:my operation
+    cond=>condition: yes or no?
+    
+    st->op->cond
+    cond(yes)->e
+    cond(no)->op
+    ```
+    ```sequence
+    Alice->Bob:hello,how are you?
+    Note right of Bob:Bob thinks
+    Bog-->Alice:I am fine!
+    ```
